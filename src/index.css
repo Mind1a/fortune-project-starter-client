@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer components {
+  a.active {
+    @apply bg-purple-100 text-purple-600;
+  }
+}
