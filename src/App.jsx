@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AllTemplates from "./pages/AllTemplates";
 import SavedFortunes from "./pages/SavedFortunes";
-import CreateFortune from "./pages/CreateFortune";
+import Feedback from "./pages/Feedback";
+import FeedbackList from "./pages/FeedbackList";
 import Navbar from "./components/Navbar";
-import GoogleAuthPage from "./pages/GoogleAuthPage";
+import CreateFortuneTemplate from "./pages/CreateFortuneTemplate";
 
 function App() {
   return (
@@ -15,7 +16,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/templates" element={<AllTemplates />} />
         <Route path="/saved" element={<SavedFortunes />} />
-        <Route path="/create" element={<CreateFortune />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/feedbacks" element={<FeedbackList />} />
+        <Route path="/create" element={<CreateFortuneTemplate />} />
+
+        {/* <Route path="/About" element={<AboutComponent />} /> */}
+        {/* <Route path="*" element={<NotFoundComponent />} /> */}
       </Routes>
     </>
   );

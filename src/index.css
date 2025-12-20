@@ -4,4 +4,8 @@
   a.active {
     @apply bg-purple-100 text-purple-600;
   }
+
+  /* a.active[href="/create"] {
+    @apply shadow-lg scale-105;
+  } */
 }

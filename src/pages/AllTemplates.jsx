@@ -1,11 +1,17 @@
+// src/pages/AllTemplates.jsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { fortuneAPI } from "../services/api";
 
 export default function AllTemplates() {
+  const [templates, setTemplates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const fetchTemplates = async () => {};
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 p-4">
+    <div className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 p-4">
       <div className="max-w-6xl mx-auto pt-8">
         <div className="flex justify-between items-center mb-6">
           <button

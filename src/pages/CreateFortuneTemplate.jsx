@@ -1,11 +1,17 @@
+// src/pages/CreateFortune.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { fortuneAPI } from "../services/api";
 
-export default function CreateFortune() {
+export default function CreateFortuneTemplate() {
+  const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {};
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 p-4">
+    <div className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 p-4">
       <div className="max-w-3xl mx-auto pt-8">
         <button
           onClick={() => navigate("/")}

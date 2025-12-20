@@ -36,6 +36,20 @@ export default function Navbar() {
             </NavLink>
 
             <NavLink
+              to="/feedback"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-gray-600 transition-all hover:bg-gray-100"
+            >
+              💬 Feedback
+            </NavLink>
+
+            <NavLink
+              to="/feedbacks"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-gray-600 transition-all hover:bg-gray-100"
+            >
+              📢 All Feedback
+            </NavLink>
+
+            <NavLink
               to="/create"
               className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg transition-all"
             >

@@ -1,11 +1,18 @@
 // src/pages/Home.jsx
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { fortuneAPI } from "../services/api";
 
 export default function Home() {
+  const [fortune, setFortune] = useState(null);
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const generateFortune = async () => {};
+
+  const saveFortune = async () => {};
+
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-600 via-pink-500 to-red-500 flex items-center justify-center p-4">
+    <div className="min-h-[calc(100vh-64px)] bg-linear-to-br from-purple-600 via-pink-500 to-red-500 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-white mb-2">

@@ -1,12 +1,34 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { fortuneAPI } from "../services/api";
 
 export default function SavedFortunes() {
+  const [fortunes, setFortunes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const fetchFortunes = async () => {};
+
+  const handleDelete = async (id, name) => {};
+
+  // Filter fortunes based on search term
+  const filteredFortunes = fortunes.filter(
+    (fortune) =>
+      fortune.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      fortune.text.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-600 via-teal-600 to-blue-600 p-4 pt-20">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-green-600 via-teal-600 to-blue-600 p-4">
+      <div className="max-w-6xl mx-auto pt-8">
+        <button
+          onClick={() => navigate("/")}
+          className="text-white mb-6 flex items-center gap-2 hover:underline"
+        >
+          ← Back to Home
+        </button>
+
         <div className="bg-white rounded-3xl shadow-2xl p-8">
           <div className="text-center mb-8">
             <div className="text-6xl mb-4">💾</div>
@@ -17,6 +39,18 @@ export default function SavedFortunes() {
               All fortunes saved by users with their names
             </p>
           </div>
+
+          {!loading && fortunes.length > 0 && (
+            <div className="mb-6">
+              <input
+                type="text"
+                placeholder="Search by name or fortune text..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+          )}
 
           {loading ? (
             <div className="text-center py-12">
@@ -34,13 +68,17 @@ export default function SavedFortunes() {
                 Generate Your First Fortune
               </button>
             </div>
+          ) : filteredFortunes.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-6xl mb-4">🔍</div>
+              <p className="text-gray-600">No fortunes match your search</p>
+            </div>
           ) : (
             <div className="space-y-4">
-              {fortunes.map((fortune) => (
+              {filteredFortunes.map((fortune) => (
                 <div
                   key={fortune._id}
-                  className="bg-gradient-to-r from-teal-50 to-blue-50 p-6 rounded-xl border-2 border-teal-200 hover:shadow-lg transition-all cursor-pointer"
-                  onClick={() => navigate(`/fortune/${fortune._id}`)}
+                  className="bg-gradient-to-r from-teal-50 to-blue-50 p-6 rounded-xl border-2 border-teal-200 hover:shadow-lg transition-all"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
@@ -64,10 +102,7 @@ export default function SavedFortunes() {
                       </p>
                     </div>
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(fortune._id, fortune.name);
-                      }}
+                      onClick={() => handleDelete(fortune._id, fortune.name)}
                       className="text-red-500 hover:text-red-700 font-semibold px-3 py-1 rounded hover:bg-red-50 transition-colors"
                     >
                       🗑️
@@ -78,13 +113,18 @@ export default function SavedFortunes() {
             </div>
           )}
 
-          {fortunes.length > 0 && (
+          {!loading && fortunes.length > 0 && (
             <div className="mt-8 text-center">
               <p className="text-gray-600">
                 Total Saved:{" "}
                 <span className="font-bold text-teal-600">
                   {fortunes.length}
                 </span>
+                {searchTerm && filteredFortunes.length !== fortunes.length && (
+                  <span className="ml-2">
+                    (Showing: {filteredFortunes.length})
+                  </span>
+                )}
               </p>
             </div>
           )}
